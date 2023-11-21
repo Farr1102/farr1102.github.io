@@ -2,7 +2,7 @@
 layout: post
 title: Quick markdown example
 subtitle: This is a quick markdown example
-categories: markdown
+categories: md示例
 tags: [example]
 top: 2
 ---
