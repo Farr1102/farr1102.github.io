@@ -2,3 +2,30 @@
 layout: framework
 ---
 
+<h1>Random Lorem Picsum Image</h1>
+
+<div id="image-container">
+  <img id="random-image" alt="Random Lorem Picsum Image" />
+</div>
+
+<button onclick="loadRandomImage()">Load Random Image</button>
+
+<script>
+  function loadRandomImage() {
+    var imageContainer = document.getElementById("image-container");
+    var randomImage = document.getElementById("random-image");
+
+    // Clear previous image
+    randomImage.src = "";
+
+    // Generate a random image URL using Lorem Picsum
+    var randomImageUrl =
+      "https://picsum.photos/800/600?random=" + Math.random();
+
+    // Set the source of the image
+    randomImage.src = randomImageUrl;
+
+    // Append the image to the container
+    imageContainer.appendChild(randomImage);
+  }
+</script>
