@@ -1,0 +1,1708 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/jekyll-theme-yat/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-theme-yat/" rel="alternate" type="text/html" /><updated>2023-12-18T12:59:19+00:00</updated><id>/jekyll-theme-yat/feed.xml</id><title type="html">Farr 的博客</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Farr</name></author><entry><title type="html">欢迎查看我的博客!</title><link href="/jekyll-theme-yat/%E5%85%B3%E4%BA%8E/2023/11/18/%E6%AC%A2%E8%BF%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2.html" rel="alternate" type="text/html" title="欢迎查看我的博客!" /><published>2023-11-18T00:00:00+00:00</published><updated>2023-11-18T00:00:00+00:00</updated><id>/jekyll-theme-yat/%E5%85%B3%E4%BA%8E/2023/11/18/%E6%AC%A2%E8%BF%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2</id><content type="html" xml:base="/jekyll-theme-yat/%E5%85%B3%E4%BA%8E/2023/11/18/%E6%AC%A2%E8%BF%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2.html"><![CDATA[<p>这是我个人网站的第一个博客</p>
+
+<p>使用的是 Jekyll + github Pages</p>]]></content><author><name>Farr</name></author><category term="关于" /><category term="jekyll" /><category term="theme" /><category term="yat" /><summary type="html"><![CDATA[这是我个人网站的第一个博客]]></summary></entry><entry><title type="html">React-JSX</title><link href="/jekyll-theme-yat/react/2022/03/04/jsx.html" rel="alternate" type="text/html" title="React-JSX" /><published>2022-03-04T00:00:00+00:00</published><updated>2022-03-04T00:00:00+00:00</updated><id>/jekyll-theme-yat/react/2022/03/04/jsx</id><content type="html" xml:base="/jekyll-theme-yat/react/2022/03/04/jsx.html"><![CDATA[<blockquote>
+  <p>JSX 是深入学习 React 的基础, 学好 jsx 有助于理解 Fiber</p>
+</blockquote>
+
+<h3 id="jsx-编译">JSX 编译</h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>hello, world<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Index</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>上边 html 代码编译后</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="p">,</span>
+  <span class="kc">null</span><span class="p">,</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="dl">"</span><span class="s2">hello, world</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>如上，jsx 会被编译成 <code class="language-plaintext highlighter-rouge">React Element</code> 的形式。</p>
+
+<p><code class="language-plaintext highlighter-rouge">React.createElement</code> 用法</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">React</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span>
+  <span class="nx">type</span><span class="p">,</span> <span class="c1">// 若为组件类型，传入组件对应的类或者函数；若为dom元素，则传入'div' or 'span'等字符串</span>
+  <span class="p">[</span><span class="nx">props</span><span class="p">],</span> <span class="c1">// 一个对象，若为组件，为props；若为dom元素，则为标签属性</span>
+  <span class="p">[...</span><span class="nx">children</span><span class="p">]</span> <span class="c1">// 按顺序排列children</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>这也是为什么老版本 React 中，jsx 文件必须默认引入 React</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">...</span>
+<span class="p">{</span>
+  <span class="nx">$$typeof</span><span class="p">:</span> <span class="nc">Symbol</span><span class="p">(</span><span class="nx">react</span><span class="p">.</span><span class="nx">element</span><span class="p">),</span>
+  <span class="nx">type</span><span class="p">:</span> <span class="nc">Symbol</span><span class="p">(</span><span class="nx">react</span><span class="p">.</span><span class="nx">fragment</span><span class="p">),</span>
+  <span class="nx">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">null</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">ref</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nx">props</span><span class="p">:</span> <span class="p">{...},</span>
+  <span class="nx">children</span><span class="p">:</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="nx">$$typeof</span><span class="p">:</span> <span class="nc">Symbol</span><span class="p">(</span><span class="nx">react</span><span class="p">.</span><span class="nx">element</span><span class="p">),</span> <span class="nx">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">,</span> <span class="nx">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">null</span><span class="dl">'</span><span class="p">,</span> <span class="nx">ref</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">props</span><span class="p">:</span> <span class="p">{...},</span> <span class="nx">children</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world</span><span class="dl">'</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>div 会被 <code class="language-plaintext highlighter-rouge">React.createElement</code> 转换为 <code class="language-plaintext highlighter-rouge">react element</code> 对象</p>
+
+<h3 id="jsx-的转换规则">jsx 的转换规则</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jsx</code>元素类型</td>
+      <td><code class="language-plaintext highlighter-rouge">react.createElement</code>转换后</td>
+      <td><code class="language-plaintext highlighter-rouge">type</code>属性</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">element</code>元素类型</td>
+      <td><code class="language-plaintext highlighter-rouge">react element</code>类型</td>
+      <td>标签字符串，如<code class="language-plaintext highlighter-rouge">div</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">fragment</code>类型</td>
+      <td><code class="language-plaintext highlighter-rouge">react element</code>类型</td>
+      <td><code class="language-plaintext highlighter-rouge">symbol react.fragment</code>类型</td>
+    </tr>
+    <tr>
+      <td>文本类型</td>
+      <td>字符串</td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>数组类型</td>
+      <td>返回数组结构，子元素再被<code class="language-plaintext highlighter-rouge">react.createElement</code>转换</td>
+      <td>无</td>
+    </tr>
+    <tr>
+      <td>组件类型</td>
+      <td><code class="language-plaintext highlighter-rouge">react element</code>类型</td>
+      <td>组件类或者组件函数本身</td>
+    </tr>
+    <tr>
+      <td>三元运算/表达式</td>
+      <td>先执行三元运算,然后执行上述规则</td>
+      <td>运算返回结果</td>
+    </tr>
+    <tr>
+      <td>函数执行</td>
+      <td>先执行函数,然后执行上述规则</td>
+      <td>函数返回结果</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="react-调和处理">React 调和处理</h3>
+
+<p>在调和阶段，React element 对象的每一个子节点都会映射到一个<code class="language-plaintext highlighter-rouge">fiber</code>，然后通过<code class="language-plaintext highlighter-rouge">sibling</code>、<code class="language-plaintext highlighter-rouge">return</code>、<code class="language-plaintext highlighter-rouge">child</code>将每一个<code class="language-plaintext highlighter-rouge">fiber</code>对象联系起来</p>
+
+<h4 id="不同类型的-fiber-tag">不同类型的 fiber Tag</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">FunctionComponent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// 函数组件</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">ClassComponent</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// 类组件</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">IndeterminateComponent</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// 初始化时不知是函数or类组件</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">HostRoot</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// 通过reactDom.render()产生的根元素</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">HostPortal</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="c1">// 通过reactDom.createPortal()产生的Portal</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">HostComponent</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// dom元素，比如div</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">HostText</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="c1">// 文本节点</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Fragment</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="c1">// 对应&lt;React.Fragment&gt;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Mode</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="c1">// 对应&lt;React.StrictMode&gt;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">ContextConsumer</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="c1">// 对应&lt;React.Consumer&gt;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">ContextProvider</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// 对应&lt;React.Provider&gt;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">ForwardRef</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="c1">// 对应React.ForwardRef</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Profiler</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="c1">// 对应&lt;Profiler /&gt;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">SuspenseComponent</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="c1">// 对应&lt;Suspense&gt;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">MemoComponent</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="c1">// 对应React.memo返回的组件</span>
+</code></pre></div></div>
+
+<h4 id="jsx-结构图">jsx 结构图</h4>
+
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/873f00b1255d4f5f8dac4954cf37dc9f~tplv-k3u1fbpfcp-jj-mark:1512:0:0:0:q75.awebp" alt="Alt text" /></p>
+
+<p>fiber 对应关系</p>
+
+<ul>
+  <li>child： 一个由父级 fiber 指向子级 fiber 的指针。</li>
+  <li>return：一个子级 fiber 指向父级 fiber 的指针。</li>
+  <li>sibling: 一个 fiber 指向下一个兄弟 fiber 的指针。</li>
+</ul>]]></content><author><name>Farr</name></author><category term="React" /><category term="react" /><summary type="html"><![CDATA[JSX 是深入学习 React 的基础, 学好 jsx 有助于理解 Fiber]]></summary></entry><entry><title type="html">react学习路线</title><link href="/jekyll-theme-yat/react/2022/03/03/react%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF.html" rel="alternate" type="text/html" title="react学习路线" /><published>2022-03-03T00:00:00+00:00</published><updated>2022-03-03T00:00:00+00:00</updated><id>/jekyll-theme-yat/react/2022/03/03/react%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF</id><content type="html" xml:base="/jekyll-theme-yat/react/2022/03/03/react%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF.html"><![CDATA[<p><a href="https://juejin.cn/book/6945998773818490884/">React 进阶指南</a> 学习路线</p>
+
+<div style="width: 100%">
+  <img src="/jekyll-theme-yat/assets/images/react-study-map.png" alt="Cover Image" />
+</div>]]></content><author><name>Farr</name></author><category term="React" /><category term="react" /><summary type="html"><![CDATA[React 进阶指南 学习路线]]></summary></entry><entry><title type="html">一些有用的代码</title><link href="/jekyll-theme-yat/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81/2021/01/21/%E4%B8%80%E4%BA%9B%E6%9C%89%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81.html" rel="alternate" type="text/html" title="一些有用的代码" /><published>2021-01-21T00:00:00+00:00</published><updated>2021-01-21T00:00:00+00:00</updated><id>/jekyll-theme-yat/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81/2021/01/21/%E4%B8%80%E4%BA%9B%E6%9C%89%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81</id><content type="html" xml:base="/jekyll-theme-yat/%E6%9C%89%E7%94%A8%E4%BB%A3%E7%A0%81/2021/01/21/%E4%B8%80%E4%BA%9B%E6%9C%89%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81.html"><![CDATA[<h2 id="usedebouncehook-延迟触发setstate">useDebounceHook (延迟触发setState)</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">useDebounceHook</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">debounceValue</span><span class="p">,</span> <span class="nx">setDebounceValue</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+        <span class="kd">let</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">setDebounceValue</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span> <span class="nx">delay</span><span class="p">);</span>
+        <span class="k">return </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">delay</span><span class="p">]);</span> 
+    <span class="k">return</span> <span class="nx">debounceValue</span><span class="p">;</span> 
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="usethrottlevalue">useThrottleValue</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">useThrottleValue</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">duration</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">throttleValue</span><span class="p">,</span> <span class="nx">setThrottleValue</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">Local</span> <span class="o">=</span> <span class="nf">useRef</span><span class="p">({</span> <span class="na">flag</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}).</span><span class="nx">current</span><span class="p">;</span>
+  <span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">timer</span><span class="p">;</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">Local</span><span class="p">.</span><span class="nx">flag</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">Local</span><span class="p">.</span><span class="nx">flag</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="nf">setThrottleValue</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+      <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">Local</span><span class="p">.</span><span class="nx">flag</span> <span class="o">=</span> <span class="kc">true</span><span class="p">),</span> <span class="nx">duration</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">setThrottleValue</span><span class="p">(</span><span class="nx">value</span><span class="p">),</span> <span class="nx">duration</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">value</span><span class="p">,</span> <span class="nx">duration</span><span class="p">,</span> <span class="nx">Local</span><span class="p">]);</span>
+  <span class="k">return</span> <span class="nx">throttleValue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>对应的在手势滑动中的使用</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">yvalue</span><span class="p">,</span> <span class="nx">setYValue</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">throttleValue</span> <span class="o">=</span> <span class="nf">useThrottleValue</span><span class="p">(</span><span class="nx">yvalue</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+  <span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="dl">"</span><span class="s2">change</span><span class="dl">"</span><span class="p">,</span> <span class="nx">throttleValue</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">throttleValue</span><span class="p">]);</span>
+
+  <span class="kd">function</span> <span class="nf">onMoving</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">tag</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">touchY</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">touches</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">pageY</span><span class="p">;</span>
+    <span class="nf">setYValue</span><span class="p">(</span><span class="nx">touchY</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span>
+      <span class="na">onTouchMove</span><span class="p">=</span><span class="si">{</span><span class="nx">onMoving</span><span class="si">}</span>
+      <span class="na">style</span><span class="p">=</span>
+    <span class="p">/&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="身份证验证">身份证验证</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//检验身份证号</span>
+<span class="kr">interface</span> <span class="nx">cityState</span> <span class="p">{</span> 
+  <span class="p">[</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span><span class="p">]</span> <span class="p">:</span> <span class="nx">string</span>
+<span class="p">}</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nf">checkIDNo</span><span class="p">(</span><span class="nx">idNo</span><span class="p">:</span> <span class="nx">number</span> <span class="o">|</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">idNo</span> <span class="o">=</span> <span class="nc">String</span><span class="p">(</span><span class="nx">idNo</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">idNo</span> <span class="o">&amp;&amp;</span> <span class="nx">idNo</span><span class="p">.</span><span class="nx">length</span> <span class="o">!==</span> <span class="mi">18</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">idNo</span> <span class="o">||</span> <span class="o">!</span><span class="sr">/^</span><span class="se">\d{6}(</span><span class="sr">18|19|20</span><span class="se">)?\d{2}(</span><span class="sr">0</span><span class="se">[</span><span class="sr">1-9</span><span class="se">]</span><span class="sr">|1</span><span class="se">[</span><span class="sr">12</span><span class="se">])(</span><span class="sr">0</span><span class="se">[</span><span class="sr">1-9</span><span class="se">]</span><span class="sr">|</span><span class="se">[</span><span class="sr">12</span><span class="se">]\d</span><span class="sr">|3</span><span class="se">[</span><span class="sr">01</span><span class="se">])\d{3}(\d</span><span class="sr">|X</span><span class="se">)</span><span class="sr">$/i</span><span class="p">.</span><span class="nf">test</span><span class="p">(</span><span class="nx">idNo</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">const</span> <span class="nx">city</span><span class="p">:</span> <span class="nx">cityState</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">11</span><span class="p">:</span> <span class="dl">"</span><span class="s2">北京</span><span class="dl">"</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="dl">"</span><span class="s2">天津</span><span class="dl">"</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span> <span class="dl">"</span><span class="s2">河北</span><span class="dl">"</span><span class="p">,</span> <span class="mi">14</span><span class="p">:</span> <span class="dl">"</span><span class="s2">山西</span><span class="dl">"</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="dl">"</span><span class="s2">内蒙古</span><span class="dl">"</span><span class="p">,</span> <span class="mi">21</span><span class="p">:</span> <span class="dl">"</span><span class="s2">辽宁</span><span class="dl">"</span><span class="p">,</span> <span class="mi">22</span><span class="p">:</span> <span class="dl">"</span><span class="s2">吉林</span><span class="dl">"</span><span class="p">,</span> <span class="mi">23</span><span class="p">:</span> <span class="dl">"</span><span class="s2">黑龙江 </span><span class="dl">"</span><span class="p">,</span> <span class="mi">31</span><span class="p">:</span> <span class="dl">"</span><span class="s2">上海</span><span class="dl">"</span><span class="p">,</span> <span class="mi">32</span><span class="p">:</span> <span class="dl">"</span><span class="s2">江苏</span><span class="dl">"</span><span class="p">,</span> <span class="mi">33</span><span class="p">:</span> <span class="dl">"</span><span class="s2">浙江</span><span class="dl">"</span><span class="p">,</span> <span class="mi">34</span><span class="p">:</span> <span class="dl">"</span><span class="s2">安徽</span><span class="dl">"</span><span class="p">,</span> <span class="mi">35</span><span class="p">:</span> <span class="dl">"</span><span class="s2">福建</span><span class="dl">"</span><span class="p">,</span> <span class="mi">36</span><span class="p">:</span> <span class="dl">"</span><span class="s2">江西</span><span class="dl">"</span><span class="p">,</span> <span class="mi">37</span><span class="p">:</span> <span class="dl">"</span><span class="s2">山东</span><span class="dl">"</span><span class="p">,</span> <span class="mi">41</span><span class="p">:</span> <span class="dl">"</span><span class="s2">河南</span><span class="dl">"</span><span class="p">,</span> <span class="mi">42</span><span class="p">:</span> <span class="dl">"</span><span class="s2">湖北 </span><span class="dl">"</span><span class="p">,</span> <span class="mi">43</span><span class="p">:</span> <span class="dl">"</span><span class="s2">湖南</span><span class="dl">"</span><span class="p">,</span> <span class="mi">44</span><span class="p">:</span> <span class="dl">"</span><span class="s2">广东</span><span class="dl">"</span><span class="p">,</span> <span class="mi">45</span><span class="p">:</span> <span class="dl">"</span><span class="s2">广西</span><span class="dl">"</span><span class="p">,</span> <span class="mi">46</span><span class="p">:</span> <span class="dl">"</span><span class="s2">海南</span><span class="dl">"</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span> <span class="dl">"</span><span class="s2">重庆</span><span class="dl">"</span><span class="p">,</span> <span class="mi">51</span><span class="p">:</span> <span class="dl">"</span><span class="s2">四川</span><span class="dl">"</span><span class="p">,</span> <span class="mi">52</span><span class="p">:</span> <span class="dl">"</span><span class="s2">贵州</span><span class="dl">"</span><span class="p">,</span> <span class="mi">53</span><span class="p">:</span> <span class="dl">"</span><span class="s2">云南</span><span class="dl">"</span><span class="p">,</span> <span class="mi">54</span><span class="p">:</span> <span class="dl">"</span><span class="s2">西藏 </span><span class="dl">"</span><span class="p">,</span> <span class="mi">61</span><span class="p">:</span> <span class="dl">"</span><span class="s2">陕西</span><span class="dl">"</span><span class="p">,</span> <span class="mi">62</span><span class="p">:</span> <span class="dl">"</span><span class="s2">甘肃</span><span class="dl">"</span><span class="p">,</span> <span class="mi">63</span><span class="p">:</span> <span class="dl">"</span><span class="s2">青海</span><span class="dl">"</span><span class="p">,</span> <span class="mi">64</span><span class="p">:</span> <span class="dl">"</span><span class="s2">宁夏</span><span class="dl">"</span><span class="p">,</span> <span class="mi">65</span><span class="p">:</span> <span class="dl">"</span><span class="s2">新疆</span><span class="dl">"</span><span class="p">,</span> <span class="mi">71</span><span class="p">:</span> <span class="dl">"</span><span class="s2">台湾</span><span class="dl">"</span><span class="p">,</span> <span class="mi">81</span><span class="p">:</span> <span class="dl">"</span><span class="s2">香港</span><span class="dl">"</span><span class="p">,</span> <span class="mi">82</span><span class="p">:</span> <span class="dl">"</span><span class="s2">澳门</span><span class="dl">"</span><span class="p">,</span> <span class="mi">91</span><span class="p">:</span> <span class="dl">"</span><span class="s2">国外 </span><span class="dl">"</span> <span class="p">}</span>
+  <span class="c1">//检查前2位</span>
+  <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">city</span><span class="p">[</span><span class="nx">idNo</span><span class="p">.</span><span class="nf">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kd">let</span> <span class="nx">sBirthday</span> <span class="o">=</span> <span class="nx">idNo</span><span class="p">.</span><span class="nf">substr</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">idNo</span><span class="p">.</span><span class="nf">substr</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">idNo</span><span class="p">.</span><span class="nf">substr</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">(</span><span class="nx">sBirthday</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/-/g</span><span class="p">,</span> <span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">));</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">sBirthday</span> <span class="o">!=</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nf">getFullYear</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nf">getMonth</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">-</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nf">getDate</span><span class="p">()))</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+  <span class="c1">//18位身份证需要验证最后一位校验位</span>
+  <span class="c1">// idNo = idNo.split('');</span>
+  <span class="c1">//∑(ai×Wi)(mod 11)</span>
+  <span class="c1">//加权因子</span>
+  <span class="kd">let</span> <span class="nx">factor</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+  <span class="c1">//校验位</span>
+  <span class="kd">let</span> <span class="nx">parity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">ai</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">wi</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ai</span> <span class="o">=</span> <span class="nc">Number</span><span class="p">(</span><span class="nx">idNo</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="nx">wi</span> <span class="o">=</span> <span class="nx">factor</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">ai</span> <span class="o">*</span> <span class="nx">wi</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">parity</span><span class="p">[</span><span class="nx">sum</span> <span class="o">%</span> <span class="mi">11</span><span class="p">]</span> <span class="o">!=</span> <span class="nx">idNo</span><span class="p">[</span><span class="mi">17</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="userefcallback">useRefCallback</h2>
+
+<pre><code class="language-TypeScript">import { useCallback, useRef } from 'react';
+
+type anyFunc = &lt;T, U&gt;(...args: T[]) =&gt; U;
+
+export default function useRefCacheCallback&lt;T extends anyFunc&gt;(callback: T): T {
+  const callbackRef = useRef(callback);
+  callbackRef.current = callback;
+
+  return useCallback((...args: any[]) =&gt; callbackRef.current(...args), []) as T;
+}
+</code></pre>
+
+<h2 id="禁止鼠标右键">禁止鼠标右键</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">noRightClickDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">IntelligentDaubContainer</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">noRightClickDiv</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">contextmenu</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nf">preventDefault</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="input自适应">input自适应</h2>
+
+<ol>
+  <li>给普通 div 标签设置 contenteditable=”true”，设置 inline-block 以后，就可以自适应内容宽度了</li>
+  <li>将 input 的输入内容同步到一个透明的 div ，父级宽度跟随 div 的宽度，然后设置 input 为绝对定位并覆盖在上面，设置宽度为 100%</li>
+</ol>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">AutoWidthInput</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">:</span> <span class="nx">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">fontSize</span> <span class="o">=</span> <span class="mi">18</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">props</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">editing</span><span class="p">,</span> <span class="nx">setEditing</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">editedTitle</span><span class="p">,</span> <span class="nx">setEditedTitle</span><span class="p">]</span> <span class="o">=</span> <span class="nf">useState</span><span class="p">(</span><span class="nx">data</span><span class="p">?.</span><span class="nx">title</span> <span class="o">||</span> <span class="nx">data</span><span class="p">.</span><span class="nx">cardTitle</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">handleChange</span> <span class="o">=</span> <span class="p">(</span><span class="na">e</span><span class="p">:</span> <span class="nx">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">setEditedTitle</span><span class="p">(</span><span class="nf">trim</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">title</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">data</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nf">trim</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">data</span><span class="p">.</span><span class="nx">cardTitle</span> <span class="o">=</span> <span class="nf">trim</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return </span><span class="p">(</span>
+    <span class="p">&lt;&gt;</span>
+      <span class="si">{</span><span class="nx">editing</span> <span class="p">?</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">CssModule</span><span class="p">[</span><span class="dl">'</span><span class="s1">input-style</span><span class="dl">'</span><span class="p">]</span><span class="si">}</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=&gt;</span><span class="si">{</span><span class="nx">editedTitle</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">Input</span>
+            <span class="na">value</span><span class="p">=</span><span class="si">{</span><span class="nx">editedTitle</span><span class="si">}</span>
+            <span class="na">autoFocus</span>
+            <span class="na">style</span><span class="p">=</span>
+            <span class="na">maxLength</span><span class="p">=</span><span class="si">{</span><span class="mi">20</span><span class="si">}</span>
+            <span class="na">onChange</span><span class="p">=</span><span class="si">{</span><span class="nx">handleChange</span><span class="si">}</span>
+            <span class="na">onBlur</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">setEditing</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span><span class="si">}</span>
+          <span class="p">/&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">)</span> <span class="p">:</span> <span class="p">(</span>
+        <span class="p">&lt;&gt;</span>
+          <span class="p">&lt;</span><span class="nt">span</span> <span class="na">style</span><span class="p">=&gt;</span><span class="si">{</span><span class="nx">editedTitle</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nc">EditOutlined</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nf">setEditing</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="si">}</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;/&gt;</span>
+      <span class="p">)</span><span class="si">}</span>
+    <span class="p">&lt;/&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="离开页面保存操作提示">离开页面保存操作提示</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">function</span> <span class="nf">onContextmenu</span><span class="p">(</span><span class="na">e</span><span class="p">:</span> <span class="nx">MouseEvent</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">e</span><span class="p">.</span><span class="nf">preventDefault</span><span class="p">()</span>
+  <span class="p">}</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nf">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">contextmenu</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onContextmenu</span><span class="p">)</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">onbeforeunload</span> <span class="o">=</span> <span class="k">async</span> <span class="nf">function </span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">returnValue</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">确定离开当前页面吗？</span><span class="dl">'</span>
+  <span class="p">}</span>
+  <span class="k">return </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onbeforeunload</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nf">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">contextmenu</span><span class="dl">'</span><span class="p">,</span> <span class="nx">onContextmenu</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="p">[])</span>
+</code></pre></div></div>
+
+<h2 id="konva实现类似截图功能vue">konva实现类似截图功能(vue)</h2>
+
+<div class="language-vue highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;</span><span class="k">template</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">ref=</span><span class="s">"container"</span> <span class="na">class=</span><span class="s">"draw-rect-container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/</span><span class="k">template</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">script</span><span class="nt">&gt;</span>
+<span class="k">import</span> <span class="nx">Konva</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">konva</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DrawRect</span><span class="dl">"</span><span class="p">,</span>
+  <span class="nf">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">stage</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="na">layer</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="na">isDrawing</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">startX</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">startY</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="na">currentRect</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+
+  <span class="nf">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">container</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">stage</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Konva</span><span class="p">.</span><span class="nc">Stage</span><span class="p">({</span>
+      <span class="na">container</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">$refs</span><span class="p">.</span><span class="nx">container</span><span class="p">,</span>
+      <span class="na">width</span><span class="p">:</span> <span class="nx">width</span><span class="p">,</span>
+      <span class="na">height</span><span class="p">:</span> <span class="nx">height</span>
+    <span class="p">});</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">layer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Konva</span><span class="p">.</span><span class="nc">Layer</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">);</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">mousedown</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseDown</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">mousemove</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseMove</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">mouseup</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">handleMouseUp</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nf">handleMouseDown</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">pos</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nf">getPointerPosition</span><span class="p">();</span>
+      <span class="kd">const</span> <span class="nx">shape</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">stage</span><span class="p">.</span><span class="nf">getIntersection</span><span class="p">(</span><span class="nx">pos</span><span class="p">);</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">shape</span> <span class="o">&amp;&amp;</span> <span class="nx">shape</span> <span class="k">instanceof</span> <span class="nx">Konva</span><span class="p">.</span><span class="nx">Rect</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isDrawing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">startX</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">evt</span><span class="p">?.</span><span class="nx">offsetX</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">startY</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">evt</span><span class="p">?.</span><span class="nx">offsetY</span><span class="p">;</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Konva</span><span class="p">.</span><span class="nc">Rect</span><span class="p">({</span>
+        <span class="na">x</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">startX</span><span class="p">,</span>
+        <span class="na">y</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">startY</span><span class="p">,</span>
+        <span class="na">width</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">height</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="na">stroke</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#61e617</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">strokeWidth</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="na">draggable</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">});</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">draw</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nf">handleMouseMove</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">isDrawing</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+      <span class="kd">const</span> <span class="nx">currentX</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">evt</span><span class="p">.</span><span class="nx">offsetX</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">currentY</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">evt</span><span class="p">.</span><span class="nx">offsetY</span><span class="p">;</span>
+
+      <span class="kd">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">currentX</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startX</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">currentY</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startY</span><span class="p">;</span>
+
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nf">width</span><span class="p">(</span><span class="nx">width</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="nx">height</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">draw</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nf">handleMouseUp</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">isDrawing</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isDrawing</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">currentX</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">evt</span><span class="p">.</span><span class="nx">offsetX</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">currentY</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">evt</span><span class="p">.</span><span class="nx">offsetY</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">currentX</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startX</span><span class="p">;</span>
+      <span class="kd">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">currentY</span> <span class="o">-</span> <span class="k">this</span><span class="p">.</span><span class="nx">startY</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nf">width</span><span class="p">(</span><span class="nx">width</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nf">height</span><span class="p">(</span><span class="nx">height</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nx">transformer</span><span class="p">)</span> <span class="p">{</span>
+          <span class="kd">const</span> <span class="nx">transformer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Konva</span><span class="p">.</span><span class="nc">Transformer</span><span class="p">({</span>
+            <span class="na">borderStroke</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#61e617</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">rotateEnabled</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="na">enabledAnchors</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">top-center</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">middle-right</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">bottom-center</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">middle-left</span><span class="dl">'</span><span class="p">],</span>
+            <span class="na">anchorFill</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#d7d7d7</span><span class="dl">'</span><span class="p">,</span>
+            <span class="na">anchorStrokeWidth</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="p">});</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">transformer</span><span class="p">);</span>
+          <span class="nx">transformer</span><span class="p">.</span><span class="nf">attachTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">);</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">.</span><span class="nx">transformer</span> <span class="o">=</span> <span class="nx">transformer</span><span class="p">;</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">draw</span><span class="p">();</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">currentRect</span><span class="p">);</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">layer</span><span class="p">.</span><span class="nf">draw</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="nt">&lt;/</span><span class="k">script</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;</span><span class="k">style</span> <span class="na">scoped</span><span class="nt">&gt;</span>
+<span class="nc">.draw-rect-container</span> <span class="p">{</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">&lt;/</span><span class="k">style</span><span class="nt">&gt;</span>
+</code></pre></div></div>]]></content><author><name>Farr</name></author><category term="有用代码" /><category term="技巧" /><summary type="html"><![CDATA[useDebounceHook (延迟触发setState)]]></summary></entry><entry><title type="html">Promise</title><link href="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/21/promise.html" rel="alternate" type="text/html" title="Promise" /><published>2020-10-21T00:00:00+00:00</published><updated>2020-10-21T00:00:00+00:00</updated><id>/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/21/promise</id><content type="html" xml:base="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/21/promise.html"><![CDATA[<h3 id="promise-有三种状态">Promise 有三种状态</h3>
+
+<ul>
+  <li>pending</li>
+  <li>fulfilld</li>
+  <li>rejected</li>
+</ul>
+
+<p>状态一旦改变不可逆</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 定义promise状态</span>
+<span class="kd">const</span> <span class="nx">PROMISE_PENDING_STATE</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">pending</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PROMISE_FULFILLD_STATE</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">fulfilld</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PROMISE_REJECTED_STATE</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">rejected</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">Class</span> <span class="nx">MyPromise</span> <span class="p">{</span>
+  <span class="nf">constructor</span><span class="p">(</span><span class="nx">execute</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">=</span> <span class="nx">PROMISE_PENDING_STATE</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">PromiseResult</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span> <span class="o">=</span> <span class="p">[];</span>
+    
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nf">execute</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">resolve</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="nx">reject</span><span class="p">.</span><span class="nf">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="nf">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">===</span> <span class="nx">PROMISE_PENDING_STATE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">=</span> <span class="nx">PROMISE_FULFILLED_STATE</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">PromiseResult</span> <span class="o">=</span> <span class="nx">result</span><span class="p">;</span>
+        
+        <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">cb</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">cb</span><span class="p">.</span><span class="nf">onResolved</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseResult</span><span class="p">);</span>
+          <span class="p">})</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nf">reject</span><span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">===</span> <span class="nx">PROMISE_PENDING_STATE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">=</span> <span class="nx">PROMISE_REJECTED_STATE</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">PromiseResult</span> <span class="o">=</span> <span class="nx">reason</span><span class="p">;</span>
+        
+        <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">cb</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">cb</span><span class="p">.</span><span class="nf">onRejected</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseResult</span><span class="p">);</span>
+          <span class="p">})</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nf">then</span><span class="p">(</span><span class="nx">onResolved</span><span class="p">,</span> <span class="nx">onRejected</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">onResolved</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">onResolved</span> <span class="o">=</span> <span class="nx">res</span> <span class="o">=&gt;</span> <span class="nx">res</span>
+      <span class="p">}</span>
+      <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="nx">onRejected</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">onRejected</span> <span class="o">=</span> <span class="nx">reason</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nx">reason</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nc">MyPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cb</span> <span class="o">=</span> <span class="nx">fn</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">try</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nf">fn</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseResult</span><span class="p">);</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">res</span> <span class="k">instanceof</span> <span class="nx">MyPromise</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nx">res</span><span class="p">.</span><span class="nf">then</span><span class="p">(</span>
+                <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">}</span>
+              <span class="p">),</span>
+              <span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">}</span>
+            <span class="p">}</span>
+            
+          <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">===</span> <span class="nx">PROMISE_FULFILLED_STATE</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">cb</span><span class="p">(</span><span class="nx">onResolved</span><span class="p">);</span>
+          <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">===</span> <span class="nx">PROMISE_REJECTED_STATE</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">cb</span><span class="p">(</span><span class="nx">onRejected</span><span class="p">);</span>
+          <span class="p">})</span>
+        <span class="p">}</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">PromiseState</span> <span class="o">===</span> <span class="nx">PROMISE_PENDING_STATE</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+            <span class="na">onResolved</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nf">cb</span><span class="p">(</span><span class="nx">onResolved</span><span class="p">);</span>
+            <span class="p">},</span>
+            <span class="na">onRejected</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="nf">cb</span><span class="p">(</span><span class="nx">onRejected</span><span class="p">);</span>
+            <span class="p">}</span>
+          <span class="p">})</span>
+        <span class="p">}</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">catch</span><span class="p">(</span><span class="nx">onRejected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">onRejected</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">MyPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">result</span> <span class="k">instanceof</span> <span class="nx">MyPromise</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nf">then</span><span class="p">(</span>
+          <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">},</span>
+          <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">}</span> 
+        <span class="p">)</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nf">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">MyPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nf">reject</span><span class="p">(</span><span class="nx">reason</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nf">all</span><span class="p">(</span><span class="nx">pros</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">MyPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">pros</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nf">then</span><span class="p">(</span>
+          <span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">result</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span> <span class="o">=</span> <span class="nx">res</span><span class="p">;</span>
+            <span class="k">if </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="nx">pros</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nf">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+          <span class="p">}</span>
+        <span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+  
+  <span class="kd">static</span> <span class="nf">race</span><span class="p">(</span><span class="nx">pros</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nc">MyPromise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">pros</span><span class="p">.</span><span class="nf">forEach</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nf">then</span><span class="p">(</span>
+          <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">resolve</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">},</span>
+          <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">reject</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">}</span>
+        <span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Farr</name></author><category term="手写js系列" /><category term="面试" /><category term="手写" /><summary type="html"><![CDATA[Promise 有三种状态]]></summary></entry><entry><title type="html">防抖节流</title><link href="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/20/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81.html" rel="alternate" type="text/html" title="防抖节流" /><published>2020-10-20T00:00:00+00:00</published><updated>2020-10-20T00:00:00+00:00</updated><id>/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/20/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81</id><content type="html" xml:base="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/20/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81.html"><![CDATA[<h3 id="防抖">防抖</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">debounce</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">timer</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timer</span><span class="p">);</span>
+    <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="节流">节流</h3>
+
+<h2 id="通过定时器">通过定时器</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">throttle</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">timer</span><span class="p">;</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nx">timer</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">timer</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">fn</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+        <span class="nx">timer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+      <span class="p">},</span> <span class="nx">delay</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="通过时间戳">通过时间戳</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">throttle</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">begin</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">getTime</span><span class="p">();</span>
+  <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">curr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">getTime</span><span class="p">();</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">curr</span> <span class="o">-</span> <span class="nx">begin</span> <span class="o">&gt;</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">begin</span> <span class="o">=</span> <span class="nx">curr</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Farr</name></author><category term="手写js系列" /><category term="面试" /><category term="手写" /><summary type="html"><![CDATA[防抖]]></summary></entry><entry><title type="html">Call, apply, bind区别和源码</title><link href="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/19/call-apply.html" rel="alternate" type="text/html" title="Call, apply, bind区别和源码" /><published>2020-10-19T00:00:00+00:00</published><updated>2020-10-19T00:00:00+00:00</updated><id>/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/19/call-apply</id><content type="html" xml:base="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/19/call-apply.html"><![CDATA[<h3 id="区别">区别</h3>
+
+<ul>
+  <li>call与apply的区别：参数不同，fn.call(context, arg1, arg2, arg…), fn.apply(context, […args])</li>
+  <li>bind与 call,apply的区别：bind会返回一个新函数，可延时执行；call,apply会直接返回结果</li>
+</ul>
+
+<h3 id="call">Call</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myCall</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="k">this</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">TypeError</span><span class="p">(</span><span class="dl">'</span><span class="s1">myCall被调用的必须为函数</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">context</span> <span class="o">=</span> <span class="nx">context</span> <span class="o">||</span> <span class="nb">window</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">context</span><span class="p">[</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">context</span><span class="p">[</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">](...</span><span class="nx">args</span><span class="p">);</span>
+  <span class="k">delete</span> <span class="nx">context</span><span class="p">[</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">]</span>
+  <span class="k">return</span> <span class="nx">res</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="apply">Apply</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myApply</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">argsArr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="k">this</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">TypeError</span><span class="p">(</span><span class="dl">'</span><span class="s1">myApply被调用的必须为函数</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">argsArr</span> <span class="o">&amp;&amp;</span> <span class="nb">Array</span><span class="p">.</span><span class="nf">isArray</span><span class="p">(</span><span class="nx">argsArr</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">TypeError</span><span class="p">(</span><span class="dl">'</span><span class="s1">myApply参数必须为数组</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">context</span> <span class="o">=</span> <span class="nx">context</span> <span class="o">||</span> <span class="nb">window</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">context</span><span class="p">[</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">]</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">context</span><span class="p">[</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">](...</span><span class="nx">argsArr</span><span class="p">);</span>
+  <span class="k">delete</span> <span class="nx">context</span><span class="p">[</span><span class="dl">'</span><span class="s1">fn</span><span class="dl">'</span><span class="p">];</span>
+  <span class="k">return</span> <span class="nx">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="bind">Bind</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myBind</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="k">typeof</span> <span class="k">this</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">function</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nc">TypeError</span><span class="p">(</span><span class="dl">'</span><span class="s1">myBind被调用的必须为函数</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">context</span> <span class="o">=</span> <span class="nx">context</span> <span class="o">||</span> <span class="nb">window</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  
+  <span class="k">return</span> <span class="kd">function</span><span class="p">(...</span><span class="nx">innerArgs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nf">_this</span><span class="p">(...</span><span class="nx">args</span><span class="p">,</span> <span class="p">...</span><span class="nx">innerArgs</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">_this</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="nx">innnerArgs</span><span class="p">))</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>]]></content><author><name>Farr</name></author><category term="手写js系列" /><category term="面试" /><category term="手写" /><summary type="html"><![CDATA[区别]]></summary></entry><entry><title type="html">js数据类型</title><link href="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html" rel="alternate" type="text/html" title="js数据类型" /><published>2020-01-22T00:00:00+00:00</published><updated>2020-01-22T00:00:00+00:00</updated><id>/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B</id><content type="html" xml:base="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html"><![CDATA[<h2 id="js-数据类型">js 数据类型</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">message</span> <span class="o">=</span> <span class="mi">1234</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>允许上述操作的语言称为“动态类型”（dynamically typed）的编程语言，如 JavaScript</p>
+
+<p>分为原始类型和引用类型:</p>
+
+<ul>
+  <li>
+    <p>原始类型: Number、Boolean、String、Symbol、Null、Undefined、Bigint</p>
+  </li>
+  <li>
+    <p>引用类型: Object</p>
+  </li>
+</ul>
+
+<h3 id="number">Number</h3>
+
+<p>js 中的<code class="language-plaintext highlighter-rouge">number</code>可以赋值为整数和浮点数</p>
+
+<p>可以 + - * / %, 除了常规的数字，还有 <code class="language-plaintext highlighter-rouge">Infinity</code>、 <code class="language-plaintext highlighter-rouge">-Infinity</code> 和 <code class="language-plaintext highlighter-rouge">NaN</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">double</span> <span class="o">=</span> <span class="mf">123.45</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Infinity</code> 代表无穷大, -Infinity 即无穷小</p>
+
+<p>Infinity 比任何数都大， 反之亦然。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Infinity</span>
+<span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// -Infinity</span>
+<span class="c1">// 或者可以直接定义</span>
+<span class="kd">let</span> <span class="nx">infi</span> <span class="o">=</span> <span class="kc">Infinity</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">NaN</code> 代表计算错误, 对<code class="language-plaintext highlighter-rouge">NaN</code>进行任何运算都等于<code class="language-plaintext highlighter-rouge">NaN</code>（只有一个例外：NaN ** 0 结果为 1）。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// NaN</span>
+</code></pre></div></div>
+
+<p>Number 也有最大值和最小值</p>
+
+<p>Number.MAX_VALUE 表示表示可表示的最大正数，而 Number.MIN_VALUE 表示大于 0 的最小正数。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MAX_VALUE</span><span class="p">);</span> <span class="c1">// 输出表示最大正数的值</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MIN_VALUE</span><span class="p">);</span> <span class="c1">// 输出大于0的最小正数的值</span>
+</code></pre></div></div>
+
+<p>需要注意的是，Number.MIN_VALUE 表示的是 JavaScript 中能表示的最小正数值，而不是最小负数。如果想获取最小负数，可以使用 Number.NEGATIVE_INFINITY。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">NEGATIVE_INFINITY</span><span class="p">);</span> <span class="c1">// 输出负无穷大 -Infinity</span>
+</code></pre></div></div>
+
+<p>另外，JavaScript 还提供了一些其他与数值范围相关的常量，例如 Number.MAX_SAFE_INTEGER 和 Number.MIN_SAFE_INTEGER，它们分别表示 JavaScript 中安全整数的最大值和最小值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MAX_SAFE_INTEGER</span><span class="p">);</span> <span class="c1">// 输出安全整数的最大值 (2^53-1)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MIN_SAFE_INTEGER</span><span class="p">);</span> <span class="c1">// 输出安全整数的最小值 -(2^53-1)</span>
+</code></pre></div></div>
+
+<p>需要注意的是，JavaScript 中的整数是以 64 位双精度浮点数的形式表示的，因此并非所有的整数都是安全整数。超出安全整数范围的整数可能会失去精度。</p>
+
+<h3 id="bigint">BigInt</h3>
+
+<p>BigInt 是 JavaScript 中引入的一种新的基本数据类型，用于表示任意精度的整数。它允许你表示比 Number 类型支持的最大安全整数范围更大的整数，而且不会失去精度。</p>
+
+<p>在创建 BigInt 时，你可以在数字后面添加 n 或使用 BigInt() 构造函数。以下是一些使用 BigInt 的示例：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 使用n后缀</span>
+<span class="kd">const</span> <span class="nx">bigInt1</span> <span class="o">=</span> <span class="mi">1234567890123456789012345678901234567890</span><span class="nx">n</span><span class="p">;</span>
+
+<span class="c1">// 使用BigInt()构造函数</span>
+<span class="kd">const</span> <span class="nx">bigInt2</span> <span class="o">=</span> <span class="nc">BigInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">1234567890123456789012345678901234567890</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// 进行基本运算</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">bigInt1</span> <span class="o">+</span> <span class="nx">bigInt2</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 输出：2469135780246913578024691357802469135780n</span>
+</code></pre></div></div>
+
+<p>BigInt 与普通整数 Number 有一些不同之处：</p>
+
+<p>后缀 “n” 或 BigInt() 构造函数： 创建 BigInt 时，你可以直接在数字后面添加 “n” 后缀，或者使用 BigInt() 构造函数。</p>
+
+<p>不支持混合运算： BigInt 和 Number 不能直接混合使用，你需要在它们之间进行显式的转换。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bigInt</span> <span class="o">=</span> <span class="mi">123</span><span class="nx">n</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">regularInt</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+
+<span class="c1">// 错误，不能直接相加</span>
+<span class="c1">// const result = bigInt + regularInt;</span>
+
+<span class="c1">// 正确，需要进行显式转换</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">bigInt</span> <span class="o">+</span> <span class="nc">BigInt</span><span class="p">(</span><span class="nx">regularInt</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>与普通整数的比较： BigInt 与普通整数之间可以进行比较，但请注意 === 等值比较运算符会考虑类型。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bigInt</span> <span class="o">=</span> <span class="mi">123</span><span class="nx">n</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">regularInt</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">bigInt</span> <span class="o">==</span> <span class="nx">regularInt</span><span class="p">);</span> <span class="c1">// true，值相等，但类型不同</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">bigInt</span> <span class="o">===</span> <span class="nx">regularInt</span><span class="p">);</span> <span class="c1">// false，值相等，但类型不同</span>
+</code></pre></div></div>
+
+<p>BigInt 是在 ECMAScript 2020 中引入的，因此在较旧的浏览器和环境中可能不受支持。通常，当你需要处理非常大的整数时，或者需要确保不失去精度时，可以使用 BigInt。</p>
+
+<h3 id="string">String</h3>
+
+<p>在 JavaScript 中，String 是一种表示文本数据的数据类型。字符串是字符序列，可以包含任意字符，包括字母、数字、符号和空格。</p>
+
+<p>创建字符串：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str1</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Hello, World!</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 使用双引号创建字符串</span>
+<span class="kd">const</span> <span class="nx">str2</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">JavaScript</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 使用单引号创建字符串</span>
+<span class="kd">const</span> <span class="nx">str3</span> <span class="o">=</span> <span class="s2">`Template literal`</span><span class="p">;</span> <span class="c1">// 使用模板字面量创建字符串</span>
+<span class="kd">const</span> <span class="nx">greeting</span> <span class="o">=</span> <span class="s2">`Hello, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">;</span> <span class="c1">// 使用模板字面量插入变量</span>
+</code></pre></div></div>
+
+<p>JavaScript 中的字符串方法有很多，以下是一些常用的字符串方法</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Hello, World!</span><span class="dl">"</span><span class="p">;</span>
+<span class="c1">// length： 返回字符串的长度</span>
+<span class="kd">const</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// 13</span>
+
+<span class="c1">//charAt(index)： 返回指定索引位置的字符</span>
+<span class="kd">const</span> <span class="nx">char</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">charAt</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// 'W'</span>
+
+<span class="c1">// charCodeAt(index)： 返回指定索引位置字符的 Unicode 值</span>
+<span class="kd">const</span> <span class="nx">unicode</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">charCodeAt</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// 87</span>
+
+<span class="c1">// substring(start, end)： 返回从 start 到 end（不包括 end）之间的子字符串</span>
+<span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span> <span class="c1">// 'World'</span>
+
+<span class="c1">// slice(start, end)： 返回从 start 到 end（不包括 end）之间的子字符串，与 substring 类似</span>
+<span class="kd">const</span> <span class="nx">sliced</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span> <span class="c1">// 'World'</span>
+
+<span class="c1">// indexOf(substring, start)： 返回指定子字符串的第一个匹配项的索引</span>
+<span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 7</span>
+
+<span class="c1">// replace(search, replace)： 替换字符串中的匹配项</span>
+<span class="kd">const</span> <span class="nx">replaced</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Universe</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 'Hello, Universe!'</span>
+
+<span class="c1">// toUpperCase() toLowerCase() 将字符串转换为大小写</span>
+<span class="kd">const</span> <span class="nx">upper</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">();</span> <span class="c1">// 'HELLO, WORLD!'</span>
+<span class="kd">const</span> <span class="nx">lower</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">toLowerCase</span><span class="p">();</span> <span class="c1">// 'hello, world!'</span>
+
+<span class="c1">// trim()： 移除字符串两端的空格</span>
+<span class="kd">const</span> <span class="nx">spaced</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">   Hello, World!   </span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">trimmed</span> <span class="o">=</span> <span class="nx">spaced</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span> <span class="c1">// 'Hello, World!'</span>
+
+<span class="c1">// split(separator, limit)： 将字符串分割为子字符串数组</span>
+<span class="kd">const</span> <span class="nx">words</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">);</span> <span class="c1">// ['Hello', 'World!']</span>
+</code></pre></div></div>
+
+<h3 id="boolean">Boolean</h3>
+
+<p>在 JavaScript 中，Boolean 是一种基本的数据类型，表示逻辑上的真或假。它只有两个可能的值：true 和 false。Boolean 类型通常用于条件判断和逻辑运算。</p>
+
+<p>创建布尔值：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isTrue</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">isFalse</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>布尔运算符：
+逻辑与 (&amp;&amp;)： 如果两个操作数都是 true，则结果为 true；否则，结果为 false。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result1</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="kd">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td>逻辑或 (|</td>
+      <td>)： 如果至少有一个操作数是 true，则结果为 true；如果两个操作数都是 false，则结果为 false。</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result3</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="kd">const</span> <span class="nx">result4</span> <span class="o">=</span> <span class="kc">false</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<p>逻辑非 (!)： 将 true 转换为 false，将 false 转换为 true。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result5</span> <span class="o">=</span> <span class="o">!</span><span class="kc">true</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="kd">const</span> <span class="nx">result6</span> <span class="o">=</span> <span class="o">!</span><span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>布尔比较：
+相等 (== 或 ===)： 判断两个值是否相等。=== 进行严格相等性比较，不会进行类型转换。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isEqual1</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true，类型转换后相等</span>
+<span class="kd">const</span> <span class="nx">isEqual2</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// false，不进行类型转换</span>
+</code></pre></div></div>
+
+<p>不相等 (!= 或 !==)： 判断两个值是否不相等。!== 进行严格不相等性比较，不会进行类型转换。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">notEqual1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">10</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// false，类型转换后相等</span>
+<span class="kd">const</span> <span class="nx">notEqual2</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">10</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true，不进行类型转换</span>
+</code></pre></div></div>
+
+<p>转换为布尔值：
+可以使用 Boolean() 构造函数或逻辑非运算符 (!) 将其他类型的值转换为布尔值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">truthyValue</span> <span class="o">=</span> <span class="nc">Boolean</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// true，非空字符串为真</span>
+<span class="kd">const</span> <span class="nx">falsyValue</span> <span class="o">=</span> <span class="nc">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// false，数字0为假</span>
+
+<span class="kd">const</span> <span class="nx">truthyValue2</span> <span class="o">=</span> <span class="o">!!</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true，使用逻辑非运算符</span>
+<span class="kd">const</span> <span class="nx">falsyValue2</span> <span class="o">=</span> <span class="o">!!</span><span class="mi">0</span><span class="p">;</span> <span class="c1">// false，使用逻辑非运算符</span>
+</code></pre></div></div>
+
+<p>这些是布尔类型在 JavaScript 中的一些基本用法和特征。布尔类型通常用于条件判断，例如在 if 语句、循环和逻辑表达式中。</p>
+
+<h3 id="null">Null</h3>
+
+<p>null 是一种特殊的数据类型，表示一个空值或不存在的对象。当一个变量被赋值为 null 时，表示该变量不包含有效的对象引用。null 不是对象，也不是基本数据类型之一，而是一种表示“无”或“空”的特殊值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">nullValue</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="undefined">undefined</h3>
+
+<p>特殊值 undefined 和 null 一样自成类型。</p>
+
+<p>undefined 的含义是 未被赋值。</p>
+
+<p>如果一个变量已被声明，但未被赋值，那么它的值就是 undefined</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVariable</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">myVariable</span><span class="p">);</span> <span class="c1">// 输出：undefined</span>
+</code></pre></div></div>
+
+<p>如果一个函数没有显式返回值，它隐式返回 undefined。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">noReturnValue</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// 没有明确的返回值</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">noReturnValue</span><span class="p">());</span> <span class="c1">// 输出：undefined</span>
+</code></pre></div></div>
+
+<p>当你尝试访问一个对象中不存在的属性时，该属性的值也是 undefined</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">myObject</span><span class="p">.</span><span class="nx">nonExistentProperty</span><span class="p">);</span> <span class="c1">// 输出：undefined</span>
+</code></pre></div></div>
+
+<h3 id="symbol">Symbol</h3>
+
+<p>Symbol 是 ECMAScript 6 (ES6) 中引入的一种新的基本数据类型。它是一种原始值，表示独一无二的标识符。每个通过 Symbol 创建的值都是唯一的，即使它们使用相同的描述符。</p>
+
+<p>创建 Symbol：
+可以使用 Symbol() 函数来创建一个新的 Symbol。可以选择传递一个可选的字符串参数作为描述符，但这并不影响 Symbol 的唯一性。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mySymbol</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">anotherSymbol</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">"</span><span class="s2">Description</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Symbol 的唯一性：
+每个通过 Symbol 创建的值都是唯一的，即使它们具有相同的描述符：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">symbol1</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">symbol2</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">symbol1</span> <span class="o">===</span> <span class="nx">symbol2</span><span class="p">);</span> <span class="c1">// 输出：false</span>
+</code></pre></div></div>
+
+<p>使用 Symbol 作为对象属性名：
+Symbol 可以用作对象的属性名，这样可以确保属性不会被意外覆盖或冲突。由于 Symbol 是唯一的，它可以防止属性名的冲突。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">mySymbol</span><span class="p">]:</span> <span class="dl">"</span><span class="s2">Hello, Symbol!</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">mySymbol</span><span class="p">]);</span> <span class="c1">// 输出：Hello, Symbol!</span>
+</code></pre></div></div>
+
+<p>遍历 Symbol 属性：
+for…in 循环和 Object.keys() 方法无法遍历包含 Symbol 键的属性。但是，可以使用 Object.getOwnPropertySymbols() 方法获取对象中所有的 Symbol 属性。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">symbols</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">getOwnPropertySymbols</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">symbols</span><span class="p">);</span> <span class="c1">// 输出：[Symbol()]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">symbols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="c1">// 输出：Hello, Symbol!</span>
+</code></pre></div></div>
+
+<p>内置 Symbol 值：
+ECMAScript 6 引入了一些内置的 Symbol 值，用于标识对象的特殊行为。例如：</p>
+
+<p>Symbol.iterator: 用于定义对象的默认迭代器。
+Symbol.species: 用于指定构造函数创建衍生对象的构造函数。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">iterator</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nb">Symbol</span><span class="p">.</span><span class="nx">iterator</span><span class="p">]();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: 1, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: 2, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: 3, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: undefined, done: true }</span>
+</code></pre></div></div>
+
+<p>Symbol 提供了一种确保属性名的唯一性的方式，特别适用于创建不容易被意外覆盖的属性。</p>
+
+<h3 id="object">Object</h3>
+
+<p>Object 是一种复合数据类型，用于存储和组织数据。对象是键值对的集合，其中每个键都是字符串或符号，而值可以是任何数据类型，包括其他对象。对象是 JavaScript 中最基本的数据结构之一，它允许你创建和操作复杂的数据结构</p>
+
+<h2 id="判断数据类型的方法">判断数据类型的方法</h2>
+
+<h3 id="typeof">typeof</h3>
+
+<blockquote>
+  <p>null，对象，数组都会判断为 object</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">//number</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">//boolean</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//string</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">//undefined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kd">function</span> <span class="nf">a</span><span class="p">()</span> <span class="p">{});</span> <span class="c1">//function</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nc">Symbol</span><span class="p">());</span> <span class="c1">//symbol</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">//object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">{});</span> <span class="c1">//object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">[]);</span> <span class="c1">//object</span>
+</code></pre></div></div>
+
+<h3 id="instanceof">instanceof</h3>
+
+<p>用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">let</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{};</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kc">null</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">//false</span>
+<span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">fn</span> <span class="k">instanceof</span> <span class="nb">Function</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">arr</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">;</span> <span class="c1">//true</span>
+</code></pre></div></div>
+
+<p>由于此方法是通过原型链来找，可以使用 Object 包裹判断基本数据类型</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nc">Object</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="nc">Object</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">bol</span> <span class="o">=</span> <span class="nc">Object</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="nx">str</span> <span class="k">instanceof</span> <span class="nb">String</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">num</span> <span class="k">instanceof</span> <span class="nb">Number</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">bol</span> <span class="k">instanceof</span> <span class="nb">Boolean</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="c1">//使用Object 包裹 undefined和null 都会等于 {}</span>
+</code></pre></div></div>
+
+<h3 id="objectprototypetostringcall">Object.prototype.toString.call</h3>
+
+<p>此方法通过 call 修改 this 指向来调用 Object 上的 toString 方法，进而判断数据类型。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">toStr</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">;</span>
+
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//[object Number]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//[object String]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">//[object Boolean]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nc">Symbol</span><span class="p">());</span> <span class="c1">//[object Symbol]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">//[object Undefined]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">//[object Null]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">({});</span> <span class="c1">//[object Object]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">([]);</span> <span class="c1">//[object Array]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{});</span> <span class="c1">//[object Function]</span>
+</code></pre></div></div>]]></content><author><name>Farr</name></author><category term="js学习" /><category term="js" /><category term="js基础" /><summary type="html"><![CDATA[js 数据类型]]></summary></entry><entry><title type="html">关于js</title><link href="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/21/%E5%85%B3%E4%BA%8Ejs.html" rel="alternate" type="text/html" title="关于js" /><published>2020-01-21T00:00:00+00:00</published><updated>2020-01-21T00:00:00+00:00</updated><id>/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/21/%E5%85%B3%E4%BA%8Ejs</id><content type="html" xml:base="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/21/%E5%85%B3%E4%BA%8Ejs.html"><![CDATA[<h2 id="先写点基本的吧">先写点基本的吧</h2>
+
+<h3 id="js基本类型">js基本类型</h3>
+
+<p>分为基本类型和引用类型:</p>
+
+<ul>
+  <li>
+    <p>基本类型: Number、Boolean、String、Symbol、Null、Undefined、Bigint</p>
+  </li>
+  <li>
+    <p>引用类型: Function、Object</p>
+  </li>
+</ul>]]></content><author><name>Farr</name></author><category term="js学习" /><category term="js" /><category term="js基础" /><summary type="html"><![CDATA[先写点基本的吧]]></summary></entry><entry><title type="html">markdown各种示例</title><link href="/jekyll-theme-yat/md%E7%A4%BA%E4%BE%8B/2016/01/01/markdown%E5%90%84%E7%A7%8D%E7%A4%BA%E4%BE%8B.html" rel="alternate" type="text/html" title="markdown各种示例" /><published>2016-01-01T00:00:00+00:00</published><updated>2016-01-01T00:00:00+00:00</updated><id>/jekyll-theme-yat/md%E7%A4%BA%E4%BE%8B/2016/01/01/markdown%E5%90%84%E7%A7%8D%E7%A4%BA%E4%BE%8B</id><content type="html" xml:base="/jekyll-theme-yat/md%E7%A4%BA%E4%BE%8B/2016/01/01/markdown%E5%90%84%E7%A7%8D%E7%A4%BA%E4%BE%8B.html"><![CDATA[<p>Put the math expression within <span>$</span>…$:</p>
+
+<p>\(\LaTeX{}\)</p>
+
+<p>$\Pi$</p>
+
+<p>$ a * b = c ^ b $</p>
+
+<p>$ 2^{\frac{n-1}{3}} $</p>
+
+<p>$ \int_a^b f(x)\,dx. $</p>
+
+<p>\( \int_a^b f(x)\,dx. \)</p>
+
+<p>$$
+\begin{cases}
+\text{if true}\ foo <br />
+\text{if false}\ bar
+\end{cases}
+$$</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$ \rho {\rm{FOD}} = \sum\limits{\sigma ,i} {(\delta _1 - \delta _2 n_i^\sigma )</td>
+      <td>\phi _i^\sigma ({\bf{r}})</td>
+      <td>^2} $</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>$$ \rho {\rm{FOD}} = \sum\limits{\sigma ,i} {(\delta _1 - \delta _2 n_i^\sigma )</td>
+      <td>\phi _i^\sigma ({\bf{r}})</td>
+      <td>^2} $$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here is a liquid filter.</p>
+
+<p>`escape inline code`<br />
+<code class="language-plaintext highlighter-rouge">inline code</code><br />
+Here is a <strong>capture block</strong>.</p>
+
+<p>100 / 3 = 33</p>
+
+<p>:+1:
+:bolivia:</p>
+
+<p>⁣1. 21312<br />
+⁣2. 21312<br />
+⁣4. 4214</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="code"><pre><span class="kn">import</span> <span class="n">networkx</span> <span class="k">as</span> <span class="n">nx</span>
+<span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">diagrams</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">particle_counts</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="n">Counter</span><span class="p">)</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">neighbors</span> <span class="ow">in</span> <span class="n">common_neighbors</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span> <span class="c1"># Build up the graph of connections between the # common neighbors of a and b.
+</span><span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="nc">Graph</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nf">set</span><span class="p">(</span><span class="n">nl</span><span class="p">.</span><span class="n">point_indices</span><span class="p">[</span>
+<span class="n">nl</span><span class="p">.</span><span class="n">query_point_indices</span> <span class="o">==</span> <span class="n">i</span><span class="p">]).</span><span class="nf">intersection</span><span class="p">(</span><span class="n">neighbors</span><span class="p">):</span>
+<span class="n">g</span><span class="p">.</span><span class="nf">add_edge</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+
+    <span class="c1"># Define the identifiers for a CNA diagram:
+</span>    <span class="c1"># The first integer is 1 if the particles are bonded, otherwise 2
+</span>    <span class="c1"># The second integer is the number of shared neighbors
+</span>    <span class="c1"># The third integer is the number of bonds among shared neighbors
+</span>    <span class="c1"># The fourth integer is an index, just to ensure uniqueness of diagrams
+</span>    <span class="n">diagram_type</span> <span class="o">=</span> <span class="mi">2</span><span class="o">-</span><span class="nf">int</span><span class="p">(</span><span class="n">b</span> <span class="ow">in</span> <span class="n">nl</span><span class="p">.</span><span class="n">point_indices</span><span class="p">[</span><span class="n">nl</span><span class="p">.</span><span class="n">query_point_indices</span> <span class="o">==</span> <span class="n">a</span><span class="p">])</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">diagram_type</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">neighbors</span><span class="p">),</span> <span class="n">g</span><span class="p">.</span><span class="nf">number_of_edges</span><span class="p">())</span>
+    <span class="c1"># If we've seen any neighborhood graphs with this signature,
+</span>    <span class="c1"># we explicitly check if the two graphs are identical to
+</span>    <span class="c1"># determine whether to save this one. Otherwise, we add
+</span>    <span class="c1"># the new graph immediately.
+</span>    <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">diagrams</span><span class="p">:</span>
+        <span class="n">isomorphs</span> <span class="o">=</span> <span class="p">[</span><span class="n">nx</span><span class="p">.</span><span class="nf">is_isomorphic</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">diagrams</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
+        <span class="k">if</span> <span class="nf">any</span><span class="p">(</span><span class="n">isomorphs</span><span class="p">):</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">isomorphs</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">diagrams</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">diagrams</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="nf">index</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">diagrams</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="nf">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">diagrams</span><span class="p">[</span><span class="n">key</span><span class="p">].</span><span class="nf">index</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="n">cna_signature</span> <span class="o">=</span> <span class="n">key</span> <span class="o">+</span> <span class="p">(</span><span class="n">idx</span><span class="p">,)</span>
+    <span class="n">particle_counts</span><span class="p">[</span><span class="n">a</span><span class="p">].</span><span class="nf">update</span><span class="p">([</span><span class="n">cna_signature</span><span class="p">])</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">key</span> <span class="o">==</span> <span class="sc">'\0'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">finish</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="o">*</span><span class="n">key</span> <span class="o">-</span> <span class="sc">'A'</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">next</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+            <span class="n">next</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Trie</span><span class="p">();</span>
+        <span class="n">next</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">-&gt;</span><span class="n">insert</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">p</span> <span class="s2">":+1:"</span>
+</code></pre></div></div>
+
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gi">+        'user_exists' =&gt; 'SELECT EXISTS(SELECT 1 FROM table WHERE username = (:username || \'@sample'))',
++        'get_users' =&gt; 'SELECT split_part(username, \'@\', 1) FROM table WHERE (username ILIKE :search) OR (name ILIKE :search)',
++        'get_password_hash_for_user' =&gt; 'SELECT split_part(password, \'{CRYPT}\', 2) FROM table WHERE username = (:username || \'@sample\')',
++        'set_password_hash_for_user' =&gt; 'UPDATE table SET password =  \'{CRYPT}\' || :new_password_hash WHERE username = (:username || \'@sample\')',
+</span></code></pre></div></div>
+
+<p>Reload the Nginx:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>nginx <span class="nt">-s</span> reload
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>:</th>
+      <th>: :</th>
+      <th>: $$O_3 + C_2H_2 \rightarrow $$         :||</th>
+      <th>:  $$O_3 + C_2H_4 \rightarrow $$ :||</th>
+      <th>:       :</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+    <tr>
+      <th>:  ^^ Method            :</th>
+      <th>^^ $$\lambda^a$$</th>
+      <th>vdW</th>
+      <th>TS</th>
+      <th>cycloadd.</th>
+      <th>vdW</th>
+      <th>TS</th>
+      <th>cycloadd.</th>
+      <th>^^ MAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$$\lambda$$-tPBE</td>
+      <td>0.20</td>
+      <td>-0.40</td>
+      <td>7.69</td>
+      <td>-68.00</td>
+      <td>-1.86</td>
+      <td>4.87</td>
+      <td>-57.57</td>
+      <td>1.29</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>MC1H-PBE $$^b$$</td>
+      <td>0.25</td>
+      <td>-1.08</td>
+      <td>3.66</td>
+      <td>-70.97</td>
+      <td>-1.25</td>
+      <td>0.13</td>
+      <td>-61.26</td>
+      <td>3.35</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Reference values $$^c$$</td>
+      <td>———</td>
+      <td>-1.90</td>
+      <td>7.74</td>
+      <td>-63.80</td>
+      <td>-1.94</td>
+      <td>3.37</td>
+      <td>-57.15</td>
+      <td>———</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>$$^a$$ The optimal mixing parameter.$$~$$ $$^b$$ From Ref. .$$~$$ $$^c$$ Best estimates from Ref. . |||||||</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tfoot>
+</table>
+
+<table class="custom-table">
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>spancell1 |</td>
+      <td>spancell2 |</td>
+      <td>cell</td>
+      <td>spancell3 |</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^^ spancell1 |</td>
+      <td>spancell2 |</td>
+      <td>cell</td>
+      <td>spancell3 |</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+|:-----:|:-----:|:-----:|:-----:|
+| \(0,0) | \(0,1) | \(0,2) | \(0,3) |
+|     \(1,0)    \|| ^^    | \(1,3) |
+</script>
+
+<table>
+  <tbody>
+    <tr>
+      <td>(0,0)</td>
+      <td>(0,1)</td>
+      <td>(0,2)</td>
+      <td>(0,3)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>(1,0) |</td>
+      <td>^^</td>
+      <td>(1,3)</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>(0,0)</td>
+      <td>(0,1)</td>
+      <td>(0,2)</td>
+      <td>(0,3)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>(1,0) ||</td>
+      <td>(1,3) |</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>(0,0)</td>
+      <td>(0,1)</td>
+      <td>(0,2)</td>
+      <td>(0,3)</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>(1,0) ||</td>
+      <td>^^</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>(0,0)</td>
+      <td>(0,1)</td>
+      <td>(0,2)</td>
+      <td>(0,3)</td>
+      <td>\</td>
+    </tr>
+    <tr>
+      <td>(1,0) ||</td>
+      <td>^^</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="table">Table</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Stage</th>
+      <th style="text-align: right">Direct Products</th>
+      <th style="text-align: right">ATP Yields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">Glycolysis</td>
+      <td style="text-align: right">2 ATP</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: right">^^</td>
+      <td style="text-align: right">2 NADH</td>
+      <td style="text-align: right">3–5 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Pyruvaye oxidation</td>
+      <td style="text-align: right">2 NADH</td>
+      <td style="text-align: right">5 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Citric acid cycle</td>
+      <td style="text-align: right">2 ATP</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: right">^^</td>
+      <td style="text-align: right">6 NADH</td>
+      <td style="text-align: right">15 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">^^</td>
+      <td style="text-align: right">2 FADH</td>
+      <td style="text-align: right">3 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">30–32 ATP</td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>: Here’s a Inline Attribute Lists example :</th>
+      <th> </th>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>: :</td>
+      <td>: &lt;div style="color: red;"&gt; &lt; Normal HTML Block &gt; &lt;/div&gt; :</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^^</td>
+      <td>Red {: .cls style="background: orange" }</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^^ IALs</td>
+      <td>Green {: #id style="background: green; color: white" }</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^^</td>
+      <td>Blue {: style="background: blue; color: white" }</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>^^</td>
+      <td>Black {: color-style font-style}</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Heading</th>
+      <th>Column 1</th>
+      <th>Column 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Row 1</td>
+      <td>Apple<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>(Footnote)</td>
+      <td>[Youtube (Home)](https://www.youtube.com)</td>
+    </tr>
+    <tr>
+      <td>Row 2</td>
+      <td>Banana</td>
+      <td>[Github](https://www.github.com)</td>
+    </tr>
+    <tr>
+      <td>Row 3 (merged)</td>
+      <td>Blueberry</td>
+      <td>[Google](https://www.google.com) ***** [Github](https://www.github.com)</td>
+    </tr>
+    <tr>
+      <td>^^</td>
+      <td>[Plum](https://example.com)</td>
+      <td>Raspberry ![example](https://jekyllrb.com/img/octojekyll.png "An exemplary image")</td>
+    </tr>
+    <tr>
+      <td>Row 4</td>
+      <td><a href="https://www.google.com">https://www.google.com</a></td>
+      <td>[test](https://www.google.com){:target="_blank"}</td>
+    </tr>
+    <tr>
+      <td>^^</td>
+      <td>^^ <a href="https://www.youtube.com">https://www.youtube.com</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Row 5</td>
+      <td><a href="https://www.google.com">https://www.google.com</a></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><a href="https://www.google.com">https://www.google.com</a></p>
+
+<p>Not in table: <code class="language-plaintext highlighter-rouge">&lt;Mail Gateway&gt;</code></p>
+
+<p>In table:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Decision Point</th>
+      <th>Design Decision</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Authoritative DNS MX Record</td>
+      <td><code class="language-plaintext highlighter-rouge">&lt;Mail Gateway&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>9 * 9</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>1 * 1 = 1</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>1 * 2 = 2</td>
+      <td>2 * 2 = 4</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>1 * 3 = 3</td>
+      <td>2 * 3 = 6</td>
+      <td>3 * 3 = 9</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>1 * 3 = 3</td>
+      <td>2 * 3 = 6</td>
+      <td>3 * 4 = 12</td>
+      <td>4 * 4 = 16</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="emoji">Emoji</h2>
+
+<p>:+1:</p>
+
+<h2 id="mathjax">Mathjax</h2>
+
+<p>$\LaTeX{}$</p>
+
+<h2 id="plantuml">PlantUML</h2>
+
+<p><img class="plantuml" src="http://www.plantuml.com/plantuml/svg/~h407374617274756d6c0a426f62202d3e20416c696365203a2068656c6c6f0a40656e64756d6c" /></p>
+
+<h2 id="mermaid">Mermaid</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZ3JhcGggTFJcbmNvbmN1cnJlbnQuZnV0dXJlcyAtLS0-fCBvbiB0b3Agb2YgfCB0aHJlYWRpbmdcbmNvbmN1cnJlbnQuZnV0dXJlcyAtLS0-fCBvbiB0b3Agb2YgfCBtdWx0aXByb2Nlc3NpbmdcbnRocmVhZGluZyAtLS0-fCBvbiB0b3Agb2YgfCBcXF90aHJlYWRcbmNsaWNrIGNvbmN1cnJlbnQuZnV0dXJlcyBcImh0dHBzOi8vZG9jcy5weXRob24ub3JnLzMuOS9saWJyYXJ5L2NvbmN1cnJlbnQuZnV0dXJlcy5odG1sXCIgX2JsYW5rIiwibWVybWFpZCI6bnVsbH0" /></p>
+
+<h2 id="video">Video</h2>
+
+<p><img src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" alt="Flower" /></p>
+
+<p><img src="//www.youtube.com/watch?v=Ptk_1Dc2iPY" alt="" /></p>
+
+<p><img src="https://avatars3.githubusercontent.com/hubot?v=3&amp;s=40" alt="" /></p>
+
+<p><a href="//www.youtube.com/watch?v=Ptk_1Dc2iPY">[video link]</a></p>
+
+<p><img src="https://dai.ly/x7tgcev" alt="" /></p>
+
+<h2 id="audio">Audio</h2>
+
+<p><a href="https://hpr.dogphilosophy.net/test/">HTML5 Audio Formats Test</a></p>
+
+<p>Opus Audio (“.opus”):</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/opus.opus" alt="" /></p>
+
+<p>“MP3” file (“.mp3”) :</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/mp3.mp3" alt="" /></p>
+
+<p>WebM Audio (“.weba”):</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/weba.weba" alt="" /></p>
+
+<p>WebMv2 Audio (“.webm”):</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/webmv2.webm" alt="" /></p>
+
+<p>Ogg Vorbis (“.ogg”) :</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/ogg.ogg" alt="" /></p>
+
+<p>“wave” file(“.wav”) :</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/wav.wav" alt="" /></p>
+
+<p>FLAC file (“.flac”) :</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/flac.flac" alt="" /></p>
+
+<p>CAF file (“.caf”) :</p>
+
+<p><img src="https://hpr.dogphilosophy.net/test/cafopus.caf" alt="" /></p>
+
+<p>Spotify Podcast:</p>
+
+<p><img src="https://open.spotify.com/episode/2sXXGexCXPhGsdf9l99Q73?si=717c6671590745b3" alt="" /></p>
+
+<h2 id="special-media-links">Special media links</h2>
+
+<p>Local video file (“.webm”):</p>
+
+<p><img src="/jekyll-theme-yat/assets/videos/devstories.webm" alt="" /></p>
+
+<p>Video with custom thumbnail:</p>
+
+<p><a href="https://www.youtube.com/watch?v=kCHGDRHZ4eU"><img src="https://i.imgur.com/bc9HOJU.png" alt="w:1100" /></a></p>
+
+<p>Tips:</p>
+
+<ul>
+  <li>Use pipes (<code class="language-plaintext highlighter-rouge">|</code>) to delineate columns, and dashes to delineate the header row from the rest of the table.</li>
+  <li>Spacing doesn’t matter to the markdown processor, any extra white space is removed, but it can really help with readability.
+The two markdown examples below both create this table.</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Use pipes <code class="language-plaintext highlighter-rouge">(</code></td>
+      <td><code class="language-plaintext highlighter-rouge">)</code> to delineate columns, and dashes to delineate the header row from the rest of the table.</td>
+    </tr>
+  </tbody>
+</table>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Footnote <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Farr</name></author><category term="md示例" /><category term="md示例" /><summary type="html"><![CDATA[Put the math expression within $…$:]]></summary></entry></feed>

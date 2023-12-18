@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>js数据类型 | Farr 的博客</title>
+<meta name="generator" content="Jekyll v4.3.2">
+<meta property="og:title" content="js数据类型">
+<meta name="author" content="Farr">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="js数据类型以及常用方法">
+<meta property="og:description" content="js数据类型以及常用方法">
+<link rel="canonical" href="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+<meta property="og:url" content="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html">
+<meta property="og:site_name" content="Farr 的博客">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-01-22T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="js数据类型">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Farr"},"dateModified":"2020-01-22T00:00:00+00:00","datePublished":"2020-01-22T00:00:00+00:00","description":"js数据类型以及常用方法","headline":"js数据类型","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html"},"url":"/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/22/js%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="canonical" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/assts/js/main.js" relative_url></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="Farr 的博客">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js" async></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+<script src="//cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/umd/photoswipe-lightbox.umd.min.js" async></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/umd/photoswipe.umd.min.js" async></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/photoswipe/5.3.7/photoswipe.min.css" rel="stylesheet">
+<style>
+  .pswp .pswp__container .pswp__img {
+    background-color: white;
+  }
+</style>
+
+<script>
+  function initPhotoSwipe() {
+    let customOptions = {};
+
+    try {
+      const data = ``.replaceAll("=>", ":");
+      customOptions = JSON.parse(data);
+    } catch (e) {
+      console.info("Invalid custom photo previewer options! " + e.message);
+    }
+
+    // Define object and gallery options
+    const options = Object.assign(
+      {
+        gallery: "section.main",
+        children: "a.photo-swipe",
+        photo_scale: 2,
+        // dynamic import is not supported in UMD version
+        pswpModule: PhotoSwipe,
+      },
+      customOptions
+    );
+
+    const galleryEl = document.querySelector(options.gallery);
+    if (!galleryEl) {
+      return;
+    }
+
+    const imgEls = [];
+    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    els.forEach((el) => {
+      if (el.src.trim() == "") {
+        return;
+      }
+      if (!imgEls.includes(el)) {
+        imgEls.push(el);
+      }
+    });
+
+    if (imgEls.length === 0) {
+      return;
+    }
+
+    imgEls.forEach((imgEl) => {
+      imgEl.outerHTML = `
+      <a class="photo-swipe"
+        href="${imgEl.src}"
+        data-pswp-width="${
+          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+        }"
+        data-pswp-height="${
+          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+        }"
+        data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
+        target="_blank">
+        ${imgEl.outerHTML}
+      </a>`;
+    });
+
+    // Initialize PhotoSwipe 5
+    var lightbox = new PhotoSwipeLightbox(options);
+
+    lightbox.init();
+  }
+
+  window.addEventListener("load", initPhotoSwipe);
+</script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header site-header-transparent" role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="Farr 的博客" src="" onerror="this.style.display='none'">
+  Farr 的博客
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label><div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch" class="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/">首页</a><a class="page-link" href="/jekyll-theme-yat/ocategories.html">文章</a><a class="page-link" href="/jekyll-theme-yat/tags.html">标签</a><a class="page-link" href="/jekyll-theme-yat/wallpaper.html">壁纸</a><a class="page-link" href="/jekyll-theme-yat/x.html">联系我</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="French">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="page-banner">
+    <div class="page-banner-img">
+<div style="background-image: url(https://source.unsplash.com/random/1920x1080)"></div>
+        <img class="img-placeholder" src="https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+</div>
+    <div class="wrapper">
+      <div class="page-banner-inner">
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">js数据类型</h1>
+  <h2 class="post-subtitle">js数据类型以及常用方法</h2>
+
+  <div class="post-meta">
+    <time class="dt-published" datetime="2020-01-22T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jan 22, 2020
+    </time><span class="post-author left-vsplit"><i class="fa fa-pencil"></i> Farr</span>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 12 mins</span>
+  </div>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#js">#js</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#js%E5%9F%BA%E7%A1%80">#js基础</a>
+</div></header>
+</div>
+    </div>
+  </section><script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="js-数据类型">js 数据类型</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">message</span> <span class="o">=</span> <span class="mi">1234</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>允许上述操作的语言称为“动态类型”（dynamically typed）的编程语言，如 JavaScript</p>
+
+<p>分为原始类型和引用类型:</p>
+
+<ul>
+  <li>
+    <p>原始类型: Number、Boolean、String、Symbol、Null、Undefined、Bigint</p>
+  </li>
+  <li>
+    <p>引用类型: Object</p>
+  </li>
+</ul>
+
+<h3 id="number">Number</h3>
+
+<p>js 中的<code class="language-plaintext highlighter-rouge">number</code>可以赋值为整数和浮点数</p>
+
+<p>可以 + - * / %, 除了常规的数字，还有 <code class="language-plaintext highlighter-rouge">Infinity</code>、 <code class="language-plaintext highlighter-rouge">-Infinity</code> 和 <code class="language-plaintext highlighter-rouge">NaN</code></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">double</span> <span class="o">=</span> <span class="mf">123.45</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Infinity</code> 代表无穷大, -Infinity 即无穷小</p>
+
+<p>Infinity 比任何数都大， 反之亦然。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Infinity</span>
+<span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// -Infinity</span>
+<span class="c1">// 或者可以直接定义</span>
+<span class="kd">let</span> <span class="nx">infi</span> <span class="o">=</span> <span class="kc">Infinity</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">NaN</code> 代表计算错误, 对<code class="language-plaintext highlighter-rouge">NaN</code>进行任何运算都等于<code class="language-plaintext highlighter-rouge">NaN</code>（只有一个例外：NaN ** 0 结果为 1）。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// NaN</span>
+</code></pre></div></div>
+
+<p>Number 也有最大值和最小值</p>
+
+<p>Number.MAX_VALUE 表示表示可表示的最大正数，而 Number.MIN_VALUE 表示大于 0 的最小正数。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MAX_VALUE</span><span class="p">);</span> <span class="c1">// 输出表示最大正数的值</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MIN_VALUE</span><span class="p">);</span> <span class="c1">// 输出大于0的最小正数的值</span>
+</code></pre></div></div>
+
+<p>需要注意的是，Number.MIN_VALUE 表示的是 JavaScript 中能表示的最小正数值，而不是最小负数。如果想获取最小负数，可以使用 Number.NEGATIVE_INFINITY。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">NEGATIVE_INFINITY</span><span class="p">);</span> <span class="c1">// 输出负无穷大 -Infinity</span>
+</code></pre></div></div>
+
+<p>另外，JavaScript 还提供了一些其他与数值范围相关的常量，例如 Number.MAX_SAFE_INTEGER 和 Number.MIN_SAFE_INTEGER，它们分别表示 JavaScript 中安全整数的最大值和最小值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MAX_SAFE_INTEGER</span><span class="p">);</span> <span class="c1">// 输出安全整数的最大值 (2^53-1)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nx">MIN_SAFE_INTEGER</span><span class="p">);</span> <span class="c1">// 输出安全整数的最小值 -(2^53-1)</span>
+</code></pre></div></div>
+
+<p>需要注意的是，JavaScript 中的整数是以 64 位双精度浮点数的形式表示的，因此并非所有的整数都是安全整数。超出安全整数范围的整数可能会失去精度。</p>
+
+<h3 id="bigint">BigInt</h3>
+
+<p>BigInt 是 JavaScript 中引入的一种新的基本数据类型，用于表示任意精度的整数。它允许你表示比 Number 类型支持的最大安全整数范围更大的整数，而且不会失去精度。</p>
+
+<p>在创建 BigInt 时，你可以在数字后面添加 n 或使用 BigInt() 构造函数。以下是一些使用 BigInt 的示例：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 使用n后缀</span>
+<span class="kd">const</span> <span class="nx">bigInt1</span> <span class="o">=</span> <span class="mi">1234567890123456789012345678901234567890</span><span class="nx">n</span><span class="p">;</span>
+
+<span class="c1">// 使用BigInt()构造函数</span>
+<span class="kd">const</span> <span class="nx">bigInt2</span> <span class="o">=</span> <span class="nc">BigInt</span><span class="p">(</span><span class="dl">"</span><span class="s2">1234567890123456789012345678901234567890</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// 进行基本运算</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">bigInt1</span> <span class="o">+</span> <span class="nx">bigInt2</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span> <span class="c1">// 输出：2469135780246913578024691357802469135780n</span>
+</code></pre></div></div>
+
+<p>BigInt 与普通整数 Number 有一些不同之处：</p>
+
+<p>后缀 “n” 或 BigInt() 构造函数： 创建 BigInt 时，你可以直接在数字后面添加 “n” 后缀，或者使用 BigInt() 构造函数。</p>
+
+<p>不支持混合运算： BigInt 和 Number 不能直接混合使用，你需要在它们之间进行显式的转换。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bigInt</span> <span class="o">=</span> <span class="mi">123</span><span class="nx">n</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">regularInt</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+
+<span class="c1">// 错误，不能直接相加</span>
+<span class="c1">// const result = bigInt + regularInt;</span>
+
+<span class="c1">// 正确，需要进行显式转换</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">bigInt</span> <span class="o">+</span> <span class="nc">BigInt</span><span class="p">(</span><span class="nx">regularInt</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>与普通整数的比较： BigInt 与普通整数之间可以进行比较，但请注意 === 等值比较运算符会考虑类型。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bigInt</span> <span class="o">=</span> <span class="mi">123</span><span class="nx">n</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">regularInt</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">bigInt</span> <span class="o">==</span> <span class="nx">regularInt</span><span class="p">);</span> <span class="c1">// true，值相等，但类型不同</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">bigInt</span> <span class="o">===</span> <span class="nx">regularInt</span><span class="p">);</span> <span class="c1">// false，值相等，但类型不同</span>
+</code></pre></div></div>
+
+<p>BigInt 是在 ECMAScript 2020 中引入的，因此在较旧的浏览器和环境中可能不受支持。通常，当你需要处理非常大的整数时，或者需要确保不失去精度时，可以使用 BigInt。</p>
+
+<h3 id="string">String</h3>
+
+<p>在 JavaScript 中，String 是一种表示文本数据的数据类型。字符串是字符序列，可以包含任意字符，包括字母、数字、符号和空格。</p>
+
+<p>创建字符串：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str1</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Hello, World!</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 使用双引号创建字符串</span>
+<span class="kd">const</span> <span class="nx">str2</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">JavaScript</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// 使用单引号创建字符串</span>
+<span class="kd">const</span> <span class="nx">str3</span> <span class="o">=</span> <span class="s2">`Template literal`</span><span class="p">;</span> <span class="c1">// 使用模板字面量创建字符串</span>
+<span class="kd">const</span> <span class="nx">greeting</span> <span class="o">=</span> <span class="s2">`Hello, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">!`</span><span class="p">;</span> <span class="c1">// 使用模板字面量插入变量</span>
+</code></pre></div></div>
+
+<p>JavaScript 中的字符串方法有很多，以下是一些常用的字符串方法</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Hello, World!</span><span class="dl">"</span><span class="p">;</span>
+<span class="c1">// length： 返回字符串的长度</span>
+<span class="kd">const</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// 13</span>
+
+<span class="c1">//charAt(index)： 返回指定索引位置的字符</span>
+<span class="kd">const</span> <span class="nx">char</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">charAt</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// 'W'</span>
+
+<span class="c1">// charCodeAt(index)： 返回指定索引位置字符的 Unicode 值</span>
+<span class="kd">const</span> <span class="nx">unicode</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">charCodeAt</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// 87</span>
+
+<span class="c1">// substring(start, end)： 返回从 start 到 end（不包括 end）之间的子字符串</span>
+<span class="kd">const</span> <span class="nx">sub</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">substring</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span> <span class="c1">// 'World'</span>
+
+<span class="c1">// slice(start, end)： 返回从 start 到 end（不包括 end）之间的子字符串，与 substring 类似</span>
+<span class="kd">const</span> <span class="nx">sliced</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">slice</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span> <span class="c1">// 'World'</span>
+
+<span class="c1">// indexOf(substring, start)： 返回指定子字符串的第一个匹配项的索引</span>
+<span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 7</span>
+
+<span class="c1">// replace(search, replace)： 替换字符串中的匹配项</span>
+<span class="kd">const</span> <span class="nx">replaced</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">"</span><span class="s2">World</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Universe</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 'Hello, Universe!'</span>
+
+<span class="c1">// toUpperCase() toLowerCase() 将字符串转换为大小写</span>
+<span class="kd">const</span> <span class="nx">upper</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">();</span> <span class="c1">// 'HELLO, WORLD!'</span>
+<span class="kd">const</span> <span class="nx">lower</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">toLowerCase</span><span class="p">();</span> <span class="c1">// 'hello, world!'</span>
+
+<span class="c1">// trim()： 移除字符串两端的空格</span>
+<span class="kd">const</span> <span class="nx">spaced</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">   Hello, World!   </span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">trimmed</span> <span class="o">=</span> <span class="nx">spaced</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span> <span class="c1">// 'Hello, World!'</span>
+
+<span class="c1">// split(separator, limit)： 将字符串分割为子字符串数组</span>
+<span class="kd">const</span> <span class="nx">words</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">, </span><span class="dl">"</span><span class="p">);</span> <span class="c1">// ['Hello', 'World!']</span>
+</code></pre></div></div>
+
+<h3 id="boolean">Boolean</h3>
+
+<p>在 JavaScript 中，Boolean 是一种基本的数据类型，表示逻辑上的真或假。它只有两个可能的值：true 和 false。Boolean 类型通常用于条件判断和逻辑运算。</p>
+
+<p>创建布尔值：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isTrue</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">isFalse</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>布尔运算符：
+逻辑与 (&amp;&amp;)： 如果两个操作数都是 true，则结果为 true；否则，结果为 false。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result1</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="kd">const</span> <span class="nx">result2</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">&amp;&amp;</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<table>
+  <tbody>
+    <tr>
+      <td colspan="2">逻辑或 (</td>
+      
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result3</span> <span class="o">=</span> <span class="kc">true</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="kd">const</span> <span class="nx">result4</span> <span class="o">=</span> <span class="kc">false</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// false</span>
+</code></pre></div></div>
+
+<p>逻辑非 (!)： 将 true 转换为 false，将 false 转换为 true。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">result5</span> <span class="o">=</span> <span class="o">!</span><span class="kc">true</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="kd">const</span> <span class="nx">result6</span> <span class="o">=</span> <span class="o">!</span><span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>布尔比较：
+相等 (== 或 ===)： 判断两个值是否相等。=== 进行严格相等性比较，不会进行类型转换。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isEqual1</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true，类型转换后相等</span>
+<span class="kd">const</span> <span class="nx">isEqual2</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">5</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// false，不进行类型转换</span>
+</code></pre></div></div>
+
+<p>不相等 (!= 或 !==)： 判断两个值是否不相等。!== 进行严格不相等性比较，不会进行类型转换。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">notEqual1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">!=</span> <span class="dl">"</span><span class="s2">10</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// false，类型转换后相等</span>
+<span class="kd">const</span> <span class="nx">notEqual2</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">!==</span> <span class="dl">"</span><span class="s2">10</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true，不进行类型转换</span>
+</code></pre></div></div>
+
+<p>转换为布尔值：
+可以使用 Boolean() 构造函数或逻辑非运算符 (!) 将其他类型的值转换为布尔值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">truthyValue</span> <span class="o">=</span> <span class="nc">Boolean</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// true，非空字符串为真</span>
+<span class="kd">const</span> <span class="nx">falsyValue</span> <span class="o">=</span> <span class="nc">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// false，数字0为假</span>
+
+<span class="kd">const</span> <span class="nx">truthyValue2</span> <span class="o">=</span> <span class="o">!!</span><span class="dl">"</span><span class="s2">Hello</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true，使用逻辑非运算符</span>
+<span class="kd">const</span> <span class="nx">falsyValue2</span> <span class="o">=</span> <span class="o">!!</span><span class="mi">0</span><span class="p">;</span> <span class="c1">// false，使用逻辑非运算符</span>
+</code></pre></div></div>
+
+<p>这些是布尔类型在 JavaScript 中的一些基本用法和特征。布尔类型通常用于条件判断，例如在 if 语句、循环和逻辑表达式中。</p>
+
+<h3 id="null">Null</h3>
+
+<p>null 是一种特殊的数据类型，表示一个空值或不存在的对象。当一个变量被赋值为 null 时，表示该变量不包含有效的对象引用。null 不是对象，也不是基本数据类型之一，而是一种表示“无”或“空”的特殊值。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">nullValue</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="undefined">undefined</h3>
+
+<p>特殊值 undefined 和 null 一样自成类型。</p>
+
+<p>undefined 的含义是 未被赋值。</p>
+
+<p>如果一个变量已被声明，但未被赋值，那么它的值就是 undefined</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">myVariable</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">myVariable</span><span class="p">);</span> <span class="c1">// 输出：undefined</span>
+</code></pre></div></div>
+
+<p>如果一个函数没有显式返回值，它隐式返回 undefined。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">noReturnValue</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// 没有明确的返回值</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">noReturnValue</span><span class="p">());</span> <span class="c1">// 输出：undefined</span>
+</code></pre></div></div>
+
+<p>当你尝试访问一个对象中不存在的属性时，该属性的值也是 undefined</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myObject</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">myObject</span><span class="p">.</span><span class="nx">nonExistentProperty</span><span class="p">);</span> <span class="c1">// 输出：undefined</span>
+</code></pre></div></div>
+
+<h3 id="symbol">Symbol</h3>
+
+<p>Symbol 是 ECMAScript 6 (ES6) 中引入的一种新的基本数据类型。它是一种原始值，表示独一无二的标识符。每个通过 Symbol 创建的值都是唯一的，即使它们使用相同的描述符。</p>
+
+<p>创建 Symbol：
+可以使用 Symbol() 函数来创建一个新的 Symbol。可以选择传递一个可选的字符串参数作为描述符，但这并不影响 Symbol 的唯一性。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mySymbol</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">anotherSymbol</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">"</span><span class="s2">Description</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Symbol 的唯一性：
+每个通过 Symbol 创建的值都是唯一的，即使它们具有相同的描述符：</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">symbol1</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">symbol2</span> <span class="o">=</span> <span class="nc">Symbol</span><span class="p">(</span><span class="dl">"</span><span class="s2">key</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">symbol1</span> <span class="o">===</span> <span class="nx">symbol2</span><span class="p">);</span> <span class="c1">// 输出：false</span>
+</code></pre></div></div>
+
+<p>使用 Symbol 作为对象属性名：
+Symbol 可以用作对象的属性名，这样可以确保属性不会被意外覆盖或冲突。由于 Symbol 是唯一的，它可以防止属性名的冲突。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">[</span><span class="nx">mySymbol</span><span class="p">]:</span> <span class="dl">"</span><span class="s2">Hello, Symbol!</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">mySymbol</span><span class="p">]);</span> <span class="c1">// 输出：Hello, Symbol!</span>
+</code></pre></div></div>
+
+<p>遍历 Symbol 属性：
+for…in 循环和 Object.keys() 方法无法遍历包含 Symbol 键的属性。但是，可以使用 Object.getOwnPropertySymbols() 方法获取对象中所有的 Symbol 属性。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">symbols</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">getOwnPropertySymbols</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">symbols</span><span class="p">);</span> <span class="c1">// 输出：[Symbol()]</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">symbols</span><span class="p">[</span><span class="mi">0</span><span class="p">]]);</span> <span class="c1">// 输出：Hello, Symbol!</span>
+</code></pre></div></div>
+
+<p>内置 Symbol 值：
+ECMAScript 6 引入了一些内置的 Symbol 值，用于标识对象的特殊行为。例如：</p>
+
+<p>Symbol.iterator: 用于定义对象的默认迭代器。
+Symbol.species: 用于指定构造函数创建衍生对象的构造函数。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">iterator</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nb">Symbol</span><span class="p">.</span><span class="nx">iterator</span><span class="p">]();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: 1, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: 2, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: 3, done: false }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">());</span> <span class="c1">// 输出：{ value: undefined, done: true }</span>
+</code></pre></div></div>
+
+<p>Symbol 提供了一种确保属性名的唯一性的方式，特别适用于创建不容易被意外覆盖的属性。</p>
+
+<h3 id="object">Object</h3>
+
+<p>Object 是一种复合数据类型，用于存储和组织数据。对象是键值对的集合，其中每个键都是字符串或符号，而值可以是任何数据类型，包括其他对象。对象是 JavaScript 中最基本的数据结构之一，它允许你创建和操作复杂的数据结构</p>
+
+<h2 id="判断数据类型的方法">判断数据类型的方法</h2>
+
+<h3 id="typeof">typeof</h3>
+
+<blockquote>
+  <p>null，对象，数组都会判断为 object</p>
+</blockquote>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">//number</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">//boolean</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//string</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">//undefined</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kd">function</span> <span class="nf">a</span><span class="p">()</span> <span class="p">{});</span> <span class="c1">//function</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nc">Symbol</span><span class="p">());</span> <span class="c1">//symbol</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="kc">null</span><span class="p">);</span> <span class="c1">//object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">{});</span> <span class="c1">//object</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="k">typeof</span> <span class="p">[]);</span> <span class="c1">//object</span>
+</code></pre></div></div>
+
+<h3 id="instanceof">instanceof</h3>
+
+<p>用于检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="kd">let</span> <span class="nx">fn</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{};</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="kc">null</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">//false</span>
+<span class="nx">obj</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">fn</span> <span class="k">instanceof</span> <span class="nb">Function</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">arr</span> <span class="k">instanceof</span> <span class="nb">Array</span><span class="p">;</span> <span class="c1">//true</span>
+</code></pre></div></div>
+
+<p>由于此方法是通过原型链来找，可以使用 Object 包裹判断基本数据类型</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nc">Object</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="nc">Object</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">bol</span> <span class="o">=</span> <span class="nc">Object</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<span class="nx">str</span> <span class="k">instanceof</span> <span class="nb">String</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">num</span> <span class="k">instanceof</span> <span class="nb">Number</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="nx">bol</span> <span class="k">instanceof</span> <span class="nb">Boolean</span><span class="p">;</span> <span class="c1">//true</span>
+<span class="c1">//使用Object 包裹 undefined和null 都会等于 {}</span>
+</code></pre></div></div>
+
+<h3 id="objectprototypetostringcall">Object.prototype.toString.call</h3>
+
+<p>此方法通过 call 修改 this 指向来调用 Object 上的 toString 方法，进而判断数据类型。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">toStr</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">toString</span><span class="p">;</span>
+
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1">//[object Number]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">//[object String]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span> <span class="c1">//[object Boolean]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nc">Symbol</span><span class="p">());</span> <span class="c1">//[object Symbol]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="kc">undefined</span><span class="p">);</span> <span class="c1">//[object Undefined]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span> <span class="c1">//[object Null]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">({});</span> <span class="c1">//[object Object]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">([]);</span> <span class="c1">//[object Array]</span>
+<span class="nx">toStr</span><span class="p">.</span><span class="nf">call</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{});</span> <span class="c1">//[object Function]</span>
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/21/%E5%85%B3%E4%BA%8Ejs.html" title="关于js">关于js</a><a class="next" href="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/19/call-apply.html" title="Call, apply, bind区别和源码">Call, apply, bind区别和源码</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li class="">
+          <a class="post-link" href="/jekyll-theme-yat/js%E5%AD%A6%E4%B9%A0/2020/01/21/%E5%85%B3%E4%BA%8Ejs.html" title="关于js">
+            关于js<span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <!-- <span class="post-badge badge-new">NEW</span> -->
+</span>
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/19/call-apply.html" title="Call, apply, bind区别和源码">
+            Call, apply, bind区别和源码<span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <!-- <span class="post-badge badge-new">NEW</span> -->
+</span>
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/jekyll-theme-yat/react/2022/03/04/jsx.html" title="React-JSX">
+            React-JSX<span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <!-- <span class="post-badge badge-new">NEW</span> -->
+</span>
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/jekyll-theme-yat/%E6%89%8B%E5%86%99js%E7%B3%BB%E5%88%97/2020/10/21/promise.html" title="Promise">
+            Promise<span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <!-- <span class="post-badge badge-new">NEW</span> -->
+</span>
+</a>
+        </li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;"><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main>
+
+  </body>
+</html>
